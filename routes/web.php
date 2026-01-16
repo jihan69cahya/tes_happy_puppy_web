@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Data\ProdukController;
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('', [LoginController::class, 'index'])->name('login');
@@ -15,4 +16,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         Route::get('', [DashboardController::class, 'index'])->name('index');
     });
+
+    Route::resource('produk', ProdukController::class);
 });

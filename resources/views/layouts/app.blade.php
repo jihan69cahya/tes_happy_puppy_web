@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/css/fontawesome-min.css"><!-- Whether Icon css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/vendors/weather-icons/weather-icons.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/vendors/scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/vendors/datatables.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/vendors/datatable-extension.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/vendors/slick.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/vendors/slick-theme.css"><!-- App css -->
     <link id="color" rel="stylesheet" href="{{ asset('assets') }}/css/color-6.css" media="screen">
@@ -102,6 +104,7 @@
         </div>
     </div><!-- jquery-->
     <script src="{{ asset('assets') }}/js/vendors/jquery/jquery.min.js"></script><!-- bootstrap js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
     <script src="{{ asset('assets') }}/js/vendors/bootstrap/dist/js/bootstrap.bundle.min.js" defer=""></script>
     <script src="{{ asset('assets') }}/js/vendors/bootstrap/dist/js/popper.min.js" defer=""></script><!--fontawesome-->
     <script src="{{ asset('assets') }}/js/vendors/font-awesome/fontawesome-min.js"></script><!-- sidebar -->
@@ -110,10 +113,106 @@
     <script src="{{ asset('assets') }}/js/scrollbar/custom.js"></script><!-- slick-->
     <script src="{{ asset('assets') }}/js/slick/slick.min.js"></script>
     <script src="{{ asset('assets') }}/js/slick/slick.js"></script><!-- theme_customizer-->
+    <script src="{{ asset('assets') }}/js/datatable/datatables/jquery.dataTables.min.js"></script><!-- datatable_extension-->
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/dataTables.buttons.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/jszip.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/buttons.colVis.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/pdfmake.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/vfs_fonts.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/dataTables.autoFill.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/dataTables.select.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/buttons.bootstrap4.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/buttons.html5.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/buttons.print.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/dataTables.responsive.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/responsive.bootstrap4.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/dataTables.keyTable.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/dataTables.colReorder.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/dataTables.fixedHeader.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/dataTables.rowReorder.min.js"></script>
+    <script src="{{ asset('assets') }}/js/datatable/datatable-extension/dataTables.scroller.min.js"></script>
     <script src="{{ asset('assets') }}/js/theme-customizer/customizer.js"></script><!-- custom script -->
     <script src="{{ asset('assets') }}/js/script.js"></script>
     <script src="{{ asset('assets') }}/js/sweetalert/sweetalert2.min.js"></script>
     <script>
+        function delete_error() {
+            $("[id^=error-]").hide();
+        }
+
+        function delete_form() {
+            let form = $('#formData');
+            form.find('input:not([type=button]):not([type=submit])').val('').prop('checked', false);
+            form.find('textarea').val('');
+            form.find('select').each(function() {
+                $(this).val('').change();
+            });
+        }
+
+        $('.number-only').keypress(function(e) {
+            var txt = String.fromCharCode(e.which);
+            if (!txt.match(/[0-9.,]/)) {
+                return false;
+            }
+        });
+
+        $('.maskRupiah').maskMoney({
+            prefix: 'Rp. ',
+            thousands: '.',
+            decimal: ',',
+            precision: 0
+        });
+
+        function formatMaskMoney(selector, value) {
+            let clean = value ? value.toString().replace(/\D/g, '') : 0;
+            $(selector).val(clean);
+            $(selector).maskMoney('mask');
+        }
+
+        function formatRupiah(number) {
+            if (!number) number = 0;
+
+            let value = number.toString().replace(/[^0-9]/g, '');
+
+            let reverse = value.split('').reverse().join('');
+            let ribuan = reverse.match(/\d{1,3}/g);
+            let formatted = ribuan.join('.').split('').reverse().join('');
+
+            return 'Rp. ' + formatted;
+        }
+
+        function formatNumber(value) {
+            if (value == null || value === "") return "";
+
+            value = value.toString();
+
+            let parts = value.split(',');
+            let number = parts[0].replace(/\D/g, '');
+            let decimal = parts[1] ? ',' + parts[1] : '';
+
+            let formatted = number.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            return formatted + decimal;
+        }
+
+        function showLoader() {
+            if ($(".loader-wrapper").length === 0) {
+                $("body").append(`
+              <div class="loader-wrapper">
+                  <div class="loader">
+                      <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+              </div>
+          `);
+            }
+            $(".loader-wrapper").show();
+        }
+
+        function hideLoader() {
+            $(".loader-wrapper").fadeOut("slow", function() {
+                $(this).remove();
+            });
+        }
+
         document.getElementById('btn_logout').addEventListener('click', function(e) {
             e.preventDefault();
             Swal.fire({

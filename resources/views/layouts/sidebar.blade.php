@@ -19,8 +19,8 @@
                     <h6 class="f-w-600">Dashboard</h6>
                 </a>
             </li>
-            <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="#"><svg
-                        class="stroke-icon">
+            <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link"
+                    href="{{ route('produk.index') }}"><svg class="stroke-icon">
                         <use href="{{ asset('assets') }}/svg/iconly-sprite.svg#Folder"></use>
                     </svg>
                     <h6 class="f-w-600">Produk</h6>
