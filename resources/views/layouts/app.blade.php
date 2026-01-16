@@ -137,10 +137,12 @@
     <script src="{{ asset('assets') }}/js/script.js"></script>
     <script src="{{ asset('assets') }}/js/sweetalert/sweetalert2.min.js"></script>
     <script>
+        // fungsi menghapus pesan error di dalam form
         function delete_error() {
             $("[id^=error-]").hide();
         }
 
+        // fungsi membersihkan value setiap form
         function delete_form() {
             let form = $('#formData');
             form.find('input:not([type=button]):not([type=submit])').val('').prop('checked', false);
@@ -150,6 +152,7 @@
             });
         }
 
+        // fungsi inputan hanya angka
         $('.number-only').keypress(function(e) {
             var txt = String.fromCharCode(e.which);
             if (!txt.match(/[0-9.,]/)) {
@@ -157,6 +160,7 @@
             }
         });
 
+        // fungsi inputan dengan format rupiah
         $('.maskRupiah').maskMoney({
             prefix: 'Rp. ',
             thousands: '.',
@@ -164,12 +168,14 @@
             precision: 0
         });
 
+        // fungsi mengisi value dengan format rupiah
         function formatMaskMoney(selector, value) {
             let clean = value ? value.toString().replace(/\D/g, '') : 0;
             $(selector).val(clean);
             $(selector).maskMoney('mask');
         }
 
+        // fungsi format rupiah
         function formatRupiah(number) {
             if (!number) number = 0;
 
@@ -182,6 +188,7 @@
             return 'Rp. ' + formatted;
         }
 
+        // fungsi format angka
         function formatNumber(value) {
             if (value == null || value === "") return "";
 
@@ -195,6 +202,7 @@
             return formatted + decimal;
         }
 
+        // fungsi menampilkan loading halaman
         function showLoader() {
             if ($(".loader-wrapper").length === 0) {
                 $("body").append(`
@@ -207,13 +215,14 @@
             }
             $(".loader-wrapper").show();
         }
-
+        // fungsi menyembunyikan loading halaman
         function hideLoader() {
             $(".loader-wrapper").fadeOut("slow", function() {
                 $(this).remove();
             });
         }
 
+        // fungsi untuk tombol log out
         document.getElementById('btn_logout').addEventListener('click', function(e) {
             e.preventDefault();
             Swal.fire({

@@ -15,6 +15,7 @@ class LoginController extends Controller
         return view('pages.auth.login');
     }
 
+    // fungsi logika untuk pengecekan data authentikasi
     public function doLogin(Request $request)
     {
         try {
@@ -46,6 +47,8 @@ class LoginController extends Controller
             return response()->json('Terjadi kesalahan, coba lagi nanti', 500);
         }
     }
+
+    // fungsi untuk logout dan menghapus sesi
     public function logout(Request $request)
     {
         Auth::logout();

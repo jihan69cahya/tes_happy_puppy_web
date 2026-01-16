@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProdukRequest;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
 class ProdukController extends Controller
 {
+    // fungsi menampilkan halaman dan mengambil data tabel produk
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -41,25 +43,16 @@ class ProdukController extends Controller
         return view('pages.produk.index', compact('data'));
     }
 
+    // fungsi mengambil data produk berdasarkan ID
     public function edit($id)
     {
         $data = Produk::find(decrypt($id));
         return response()->json($data);
     }
 
-    public function store(Request $request)
+    // fungsi tambah data produk
+    public function store(ProdukRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:255',
-            'kategori' => 'required|string|max:255',
-            'harga' => 'required',
-            'stok' => 'required|numeric',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()]);
-        }
-
         DB::beginTransaction();
         try {
             Produk::create([
@@ -78,20 +71,10 @@ class ProdukController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    // fungsi edit data produk
+    public function update(ProdukRequest $request, $id)
     {
         $id = decrypt($id);
-
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:255',
-            'kategori' => 'required|string|max:255',
-            'harga' => 'required',
-            'stok' => 'required|numeric',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()]);
-        }
 
         DB::beginTransaction();
         try {
@@ -111,6 +94,7 @@ class ProdukController extends Controller
         }
     }
 
+    // fungsi hapus data produk
     public function destroy($id)
     {
         $id = decrypt($id);
@@ -120,7 +104,6 @@ class ProdukController extends Controller
         try {
             $data = Produk::findOrFail($id);
             $data->delete();
-
 
             DB::commit();
             return response()->json(['success' => 'Produk berhasil dihapus']);

@@ -1,3 +1,4 @@
+{{-- Fungsi global untuk mengirim data ke controller (insert, update, delete) --}}
 <script>
     function tambah_data() {
         var formData = new FormData(document.getElementById('formData'));

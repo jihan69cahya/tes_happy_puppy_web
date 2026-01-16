@@ -98,6 +98,7 @@
         <script src="{{ asset('assets') }}/js/script.js"></script>
 
         <script>
+            // fungsi menghandle submit dari halaman login
             function submitPostLogin(event, this_) {
                 event.preventDefault();
                 const email = $('#email').val().trim();

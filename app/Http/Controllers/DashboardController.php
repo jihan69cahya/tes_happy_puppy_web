@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+    // fungsi menampilkan halaman dan ambil data dashboard
     public function index()
     {
         $data['kategori'] = Produk::selectRaw("
