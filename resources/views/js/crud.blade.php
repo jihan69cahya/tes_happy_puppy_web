@@ -26,28 +26,34 @@
                     });
                 } else if (response.success) {
                     $("#modal").modal("hide");
-                    Swal.fire(
-                        'Berhasil!',
-                        response.success,
-                        'success'
-                    );
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: response.success,
+                        timer: 1000,
+                        timerProgressBar: true,
+                    });
                     get_data();
                 } else if (response.error) {
-                    Swal.fire(
-                        'Gagal!',
-                        response.error,
-                        'error'
-                    );
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal!',
+                        text: response.error,
+                        timer: 1000,
+                        timerProgressBar: true,
+                    });
                 }
                 hideLoader();
             },
             error: function(xhr, status, error) {
                 hideLoader();
-                Swal.fire(
-                    'Gagal!',
-                    'Terjadi kesalahan, coba lagi nanti',
-                    'error'
-                )
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: 'Terjadi kesalahan, coba lagi nanti',
+                    timer: 1000,
+                    timerProgressBar: true,
+                });
             },
         });
         return false;
@@ -81,28 +87,34 @@
                     });
                 } else if (response.success) {
                     $("#modal").modal("hide");
-                    Swal.fire(
-                        'Berhasil!',
-                        response.success,
-                        'success'
-                    );
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: response.success,
+                        timer: 1000,
+                        timerProgressBar: true,
+                    });
                     get_data();
                 } else if (response.error) {
-                    Swal.fire(
-                        'Gagal!',
-                        response.error,
-                        'error'
-                    );
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal!',
+                        text: response.error,
+                        timer: 1000,
+                        timerProgressBar: true,
+                    });
                 }
                 hideLoader();
             },
             error: function(xhr, status, error) {
                 hideLoader();
-                Swal.fire(
-                    'Gagal!',
-                    'Terjadi kesalahan, coba lagi nanti',
-                    'error'
-                )
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: 'Terjadi kesalahan, coba lagi nanti',
+                    timer: 1000,
+                    timerProgressBar: true,
+                });
             },
         });
         return false;
@@ -135,26 +147,32 @@
                     },
                     success: function(response) {
                         if (response.success) {
-                            Swal.fire(
-                                'Berhasil!',
-                                response.success,
-                                'success'
-                            );
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil!',
+                                text: response.success,
+                                timer: 1000,
+                                timerProgressBar: true,
+                            });
                             get_data();
                         } else if (response.error) {
-                            Swal.fire(
-                                'Gagal!',
-                                response.error,
-                                'error'
-                            );
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal!',
+                                text: response.error,
+                                timer: 1000,
+                                timerProgressBar: true,
+                            });
                         }
                     },
                     error: function() {
-                        Swal.fire(
-                            'Gagal!',
-                            'Terjadi kesalahan, coba lagi nanti',
-                            'error'
-                        )
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal!',
+                            text: 'Terjadi kesalahan, coba lagi nanti',
+                            timer: 1000,
+                            timerProgressBar: true,
+                        });
                     },
                 });
             }
