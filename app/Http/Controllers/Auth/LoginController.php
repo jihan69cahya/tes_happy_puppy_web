@@ -21,9 +21,7 @@ class LoginController extends Controller
             $user = User::where('email', $request->email)->first();
 
             if (!$user) {
-                return response()->json([
-                    'message' => 'Email tidak terdaftar'
-                ], 401);
+                return response()->json('Email tidak terdaftar', 401);
             }
 
             if (Auth::attempt([
@@ -36,9 +34,7 @@ class LoginController extends Controller
                 ], 200);
             }
 
-            return response()->json([
-                'message' => 'Password Salah'
-            ], 400);
+            return response()->json('Password salah', 400);
         } catch (\Throwable $e) {
             Log::error('Login Error', [
                 'email' => $request->email ?? null,
@@ -47,9 +43,7 @@ class LoginController extends Controller
                 'line'  => $e->getLine(),
             ]);
 
-            return response()->json([
-                'message' => 'Terjadi kesalahan pada sistem'
-            ], 500);
+            return response()->json('Terjadi kesalahan, coba lagi nanti', 500);
         }
     }
     public function logout(Request $request)

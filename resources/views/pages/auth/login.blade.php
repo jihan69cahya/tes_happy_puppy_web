@@ -134,7 +134,7 @@
                         Swal.fire({
                             icon: 'error',
                             title: 'Gagal!',
-                            text: 'Terjadi Kesalahan',
+                            text: responseText,
                         })
                     },
                     complete: () => {
