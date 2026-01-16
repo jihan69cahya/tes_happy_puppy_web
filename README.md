@@ -79,6 +79,8 @@ DB_PASSWORD=
 
 php artisan key:generate
 
+php artisan migrate
+
 php artisan db:seed UserSeeder
 
 php artisan serve
