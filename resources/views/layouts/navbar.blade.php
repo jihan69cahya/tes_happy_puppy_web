@@ -56,11 +56,8 @@
                     </div>
                     <div class="custom-menu overflow-hidden">
                         <ul class="profile-body">
-                            <li class="d-flex"> <svg class="svg-color">
-                                    <use href="{{ asset('assets') }}/svg/iconly-sprite.svg#Profile"></use>
-                                </svg><a class="ms-2" href="user-profile.html">Account</a></li>
-                            <use href="{{ asset('assets') }}/svg/iconly-sprite.svg#Login"></use>
-                            </svg><a class="ms-2" id="btn_logout" href="javascript:void(0)">Log Out</a>
+                            <a class="ms-2" id="btn_logout" href="javascript:void(0)">Log Out</a>
+                        </ul>
                 </li>
             </ul>
         </div>

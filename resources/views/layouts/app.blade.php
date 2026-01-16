@@ -12,8 +12,9 @@
     <meta name="author" content="pixelstrap">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Happy Puppy - @yield('title')</title><!-- Favicon icon-->
-    <link rel="icon" href="{{ asset('assets') }}/images/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon.png" type="image/x-icon"><!-- Google font-->
+    <link rel="icon" href="{{ asset('assets') }}/images/logo/favicon.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets') }}/images/logo/favicon.jpg" type="image/x-icon">
+    <!-- Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link

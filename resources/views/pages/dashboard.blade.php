@@ -75,7 +75,7 @@
     <div class="row">
         <div class="col-xl-6 mb-4">
             <div class="card shadow-sm">
-                <div class="card-header bg-primary">
+                <div class="card-header bg-warning">
                     <h5 class="text-white mb-0">
                         <i class="fa-solid fa-list me-2"></i>5 Produk dengan Stok Terbanyak
                     </h5>
