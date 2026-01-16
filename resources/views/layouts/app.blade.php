@@ -112,7 +112,26 @@
     <script src="{{ asset('assets') }}/js/slick/slick.js"></script><!-- theme_customizer-->
     <script src="{{ asset('assets') }}/js/theme-customizer/customizer.js"></script><!-- custom script -->
     <script src="{{ asset('assets') }}/js/script.js"></script>
-
+    <script src="{{ asset('assets') }}/js/sweetalert/sweetalert2.min.js"></script>
+    <script>
+        document.getElementById('btn_logout').addEventListener('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda akan keluar dari sistem!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2e8e87',
+                cancelButtonColor: '#C42A02',
+                confirmButtonText: 'Ya, Logout!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "{{ route('logout') }}";
+                }
+            });
+        });
+    </script>
     @yield('js')
 </body>
 

@@ -12,23 +12,18 @@
                     <h5 class="lan-1 f-w-700 sidebar-title">General</h5>
                 </div>
             </li>
-            <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i><a class="sidebar-link"
-                    href="javascript:void(0)"> <svg class="stroke-icon">
+            <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link"
+                    href="{{ route('dashboard.index') }}"><svg class="stroke-icon">
                         <use href="{{ asset('assets') }}/svg/iconly-sprite.svg#Home-dashboard"></use>
                     </svg>
-                    <h6>Dashboards</h6><i class="iconly-Arrow-Right-2 icli"></i>
+                    <h6 class="f-w-600">Dashboard</h6>
                 </a>
-                <ul class="sidebar-submenu">
-                    <li> <a href="index.html">Default</a></li>
-                    <li><a href="dashboard-02.html">Ecommerce </a></li>
-                    <li> <a href="dashboard-03.html">Education</a></li>
-                </ul>
             </li>
-            <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link"
-                    href="file-manager.html"><svg class="stroke-icon">
-                        <use href="../assets/svg/iconly-sprite.svg#Paper"></use>
+            <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="#"><svg
+                        class="stroke-icon">
+                        <use href="{{ asset('assets') }}/svg/iconly-sprite.svg#Folder"></use>
                     </svg>
-                    <h6 class="f-w-600">File Manager </h6>
+                    <h6 class="f-w-600">Produk</h6>
                 </a>
             </li>
         </ul>

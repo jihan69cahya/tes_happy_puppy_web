@@ -50,7 +50,7 @@
                         <div class="user-img"><img src="{{ asset('assets') }}/images/profile.png" alt="user">
                         </div>
                         <div class="user-content">
-                            <h6>Ava Davis</h6>
+                            <h6>{{ Auth::user()->name }}</h6>
                             <p class="mb-0">Admin<i class="fa-solid fa-chevron-down"></i></p>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                     <use href="{{ asset('assets') }}/svg/iconly-sprite.svg#Profile"></use>
                                 </svg><a class="ms-2" href="user-profile.html">Account</a></li>
                             <use href="{{ asset('assets') }}/svg/iconly-sprite.svg#Login"></use>
-                            </svg><a class="ms-2" href="login.html">Log Out</a>
+                            </svg><a class="ms-2" id="btn_logout" href="javascript:void(0)">Log Out</a>
                 </li>
             </ul>
         </div>
