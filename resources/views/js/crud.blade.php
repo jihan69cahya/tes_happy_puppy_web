@@ -39,8 +39,6 @@
                         icon: 'error',
                         title: 'Gagal!',
                         text: response.error,
-                        timer: 1000,
-                        timerProgressBar: true,
                     });
                 }
                 hideLoader();
@@ -51,8 +49,6 @@
                     icon: 'error',
                     title: 'Gagal!',
                     text: 'Terjadi kesalahan, coba lagi nanti',
-                    timer: 1000,
-                    timerProgressBar: true,
                 });
             },
         });
@@ -100,8 +96,6 @@
                         icon: 'error',
                         title: 'Gagal!',
                         text: response.error,
-                        timer: 1000,
-                        timerProgressBar: true,
                     });
                 }
                 hideLoader();
@@ -112,8 +106,6 @@
                     icon: 'error',
                     title: 'Gagal!',
                     text: 'Terjadi kesalahan, coba lagi nanti',
-                    timer: 1000,
-                    timerProgressBar: true,
                 });
             },
         });
@@ -160,8 +152,6 @@
                                 icon: 'error',
                                 title: 'Gagal!',
                                 text: response.error,
-                                timer: 1000,
-                                timerProgressBar: true,
                             });
                         }
                     },
@@ -169,9 +159,7 @@
                         Swal.fire({
                             icon: 'error',
                             title: 'Gagal!',
-                            text: 'Terjadi kesalahan, coba lagi nanti',
-                            timer: 1000,
-                            timerProgressBar: true,
+                            text: 'Terjadi kesalahan, coba lagi nanti'
                         });
                     },
                 });
