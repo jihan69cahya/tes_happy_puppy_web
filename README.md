@@ -1,6 +1,9 @@
 # 📌 Aplikasi Kelola Produk
 
 Aplikasi web sederhana berbasis **Laravel 10** yang digunakan untuk mengelola data (CRUD).
+Akses Login
+Email : admin@admin.com
+Password : admin
 
 ---
 
