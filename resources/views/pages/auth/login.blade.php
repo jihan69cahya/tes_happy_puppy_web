@@ -57,10 +57,12 @@
             <div class="col-xl-5 p-0">
                 <div class="login-card login-dark login-bg">
                     <div>
-                        <div><a class="logo" href="index.html"><img class="img-fluid for-light m-auto"
-                                    src="{{ asset('assets') }}/images/login/icon.png" alt="looginpage">
+                        <div><a class="logo" href="index.html">
+                                <img class="img-fluid for-light m-auto"
+                                    src="{{ asset('assets') }}/images/login/icon.png" alt="looginpage"
+                                    style="max-width: 250px; height: auto;">
                                 <img class="for-dark" src="{{ asset('assets') }}/images/login/icon.png" alt="logo"
-                                    style="max-width: 150px; height: auto;"></a>
+                                    style="max-width: 250px; height: auto;"></a>
                         </div>
                         <div class="login-main">
                             <form class="theme-form login-form" action="{{ route('doLogin') }}" method="POST"
